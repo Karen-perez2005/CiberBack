@@ -1,0 +1,19 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Claves privadas
+*.pem
+*.key
+
+# Logs
+*.log
+
+# Base de datos local
+*.db
+*.sqlite
+*.sqlite3
