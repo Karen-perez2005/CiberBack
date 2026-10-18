@@ -35,11 +35,12 @@ app.get('/api', (req, res) => {
 });
 
 // Ruta de Login conectada a PostgreSQL
+
 app.post('/api/login', async (req, res) => {
-    const { usuario, password } = req.body;
+    const usuario = req.body.usuario || req.body.email;
+    const { password } = req.body;
     try {
-        const resultado = await pool.query('SELECT * FROM usuarios WHERE usuario = $1', [usuario]);
-        if (resultado.rows.length === 0) {
+        const resultado = await pool.query('SELECT * FROM usuarios WHERE usuario = $1', [usuario]);        if (resultado.rows.length === 0) {
             return res.status(401).json({ mensaje: 'Usuario o contraseña incorrectos' });
         }
 
